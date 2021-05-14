@@ -6,7 +6,7 @@ router.get("/personnages", async (req, res) => {
   try {
     const skip = (req.query.page - 1) * 100;
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_API_KEY}&skip=${skip}`
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_API_KEY}&skip=${skip}&name=${req.query.search}`
     );
     res.status(200).json(response.data);
   } catch (error) {
